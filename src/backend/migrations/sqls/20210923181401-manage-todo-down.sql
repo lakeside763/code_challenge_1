@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS "subtask";
+
+DROP TABLE IF EXISTS "todo";

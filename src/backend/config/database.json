@@ -1,0 +1,5 @@
+{
+  "defaultEnv": {"ENV": "NODE_ENV"},
+  "test": { "ENV" : "DATABASE_URL" },
+  "local": { "ENV" : "DATABASE_URL" }
+}
