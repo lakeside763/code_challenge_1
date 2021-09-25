@@ -25,10 +25,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(compression());
 
+
 // mount routers
 app.use(cors(corsOptions));
 app.get('/', async (req, res) => res.status(200).send({ name, version, enviroment }));
 app.use('/todo', todoRoutes);
+
+app.use((req, res) =>  res.status(404).send('Not found'));
+app.use((err, req, res, next) =>  res.status(500).send(err.message));
+
+
 
 const shutdown = async (serverApp) => {
   console.info('Received kill signal, shutting down gracefully');
