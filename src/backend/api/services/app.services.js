@@ -1,4 +1,7 @@
+/* eslint-disable no-useless-constructor */
+/* eslint-disable no-empty-function  */
 class AppService {
+  //
   constructor() {}
 }
 

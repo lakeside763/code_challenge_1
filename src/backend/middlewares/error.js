@@ -1,16 +1,12 @@
-const errorHandler = (err, req, res, next) => {
-    let error = { ...err };
+const errorHandler = (err, req, res) => {
+  const error = { ...err };
 
-    console.log(error);
+  error.message = err.message;
 
-    error.message = err.message;
-
-
-    res.status(error.statusCode || 500).json({
-        success: false,
-        error: (error.message).replace(/[^a-zA-Z ]/g, " ") || 'Server Error'
-    });
-}
+  res.status(error.statusCode || 500).json({
+    success: false,
+    error: (error.message).replace(/[^a-zA-Z ]/g, ' ') || 'Server Error',
+  });
+};
 
 module.exports = errorHandler;
-

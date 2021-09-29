@@ -2,11 +2,9 @@ import { createContext } from "react";
 
 const TodoContext = createContext();
 
-const TodoProvider = ({ children, todo, onChangeTodoStatus, updateSubtask, addTodoSubtask }) => {
+const TodoProvider = ({ children, todo }) => {
   return (
-    <TodoContext.Provider
-      value={todo, onChangeTodoStatus, updateSubtask, addTodoSubtask}
-    >
+    <TodoContext.Provider value={todo}>
       {children}
     </TodoContext.Provider>
   )

@@ -8,6 +8,7 @@
   "scripts": {
     "start": "node -r dotenv/config index.js dotenv_config_path=.env.local",
     "dev": "npx nodemon -r dotenv/config index.js dotenv_config_path=.env.local",
+    "seed-db": "node -r dotenv/config scripts/seedDB.script.js dotenv_config_path=.env.local",
     "migrate:up": "yarn db-migrate up",
     "migrate:down": "yarn db-migrate down",
     "migrate:save": "npx dotenv -e .env.local -- yarn db-migrate create",
@@ -24,7 +25,8 @@
     "migrate-down": "yarn migrate:local:down && yarn migrate:test:down",
     "prepdb": "yarn migrate && yarn introspect && yarn prisma generate",
     "prepdb:down": "yarn migrate-down && yarn introspect && yarn prisma generate",
-    "test": "npx dotenv -e .env.test.local -- jest --forceExit --detectOpenHandles"
+    "test": "npx dotenv -e .env.test.local -- jest --forceExit --detectOpenHandles",
+    "lint": "yarn eslint . --fix"
   },
   "dependencies": {
     "@prisma/client": "^3.1.1",
@@ -46,7 +48,13 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
+    "husky": "^7.0.2",
     "nodemon": "^2.0.12",
     "prisma": "^3.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
   }
 }

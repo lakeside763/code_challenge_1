@@ -4,8 +4,6 @@ const config = {
 
 module.exports = config;
 
-module.exports = async () => {
-  return {
-    verbose: true,
-  };
-};
+module.exports = async () => ({
+  verbose: true,
+});

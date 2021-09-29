@@ -1,7 +1,7 @@
-const todoServices = require('./todo.services');
+const TodoServices = require('./todo.services');
 
 module.exports = {
   services: {
-    todo: new todoServices(),
-  }
-}
+    todo: new TodoServices(),
+  },
+};

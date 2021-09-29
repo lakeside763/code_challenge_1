@@ -1,14 +1,13 @@
-const AppService = require("./app.services");
+const AppService = require('./app.services');
 const prisma = require('../../config/database');
-const ErrorResponse = require('./../../helpers/error.helper')
-
+const ErrorResponse = require('../../helpers/error.helper');
 
 class TodoService extends AppService {
   async getTodos() {
     return prisma.todo.findMany({
       include: {
-        subtask: true
-      }
+        subtask: true,
+      },
     });
   }
 
@@ -19,7 +18,7 @@ class TodoService extends AppService {
       },
       include: {
         subtask: true,
-      }
+      },
     });
   }
 
@@ -28,16 +27,16 @@ class TodoService extends AppService {
       await prisma.subtask.create({
         data: {
           title,
-          todo: { connect: { id: todo_id } }
-        }
-      })
+          todo: { connect: { id: todo_id } },
+        },
+      });
       return prisma.todo.findUnique({
         where: { id: todo_id },
         include: { subtask: true },
       });
     } catch (error) {
-      if (error.name === 'Error') throw new ErrorResponse('Bad Request', 400)
-      throw new ErrorResponse(error.name, 500)
+      if (error.name === 'Error') throw new ErrorResponse('Bad Request', 400);
+      throw new ErrorResponse(error.name, 500);
     }
   }
 
@@ -58,11 +57,11 @@ class TodoService extends AppService {
         },
         include: {
           subtask: true,
-        }
+        },
       });
     } catch (error) {
-      if (error.name === 'Error') throw new ErrorResponse('Bad Request', 400)
-      throw new ErrorResponse(error.name, 500)
+      if (error.name === 'Error') throw new ErrorResponse('Bad Request', 400);
+      throw new ErrorResponse(error.name, 500);
     }
   }
 
@@ -73,13 +72,13 @@ class TodoService extends AppService {
         data: {
           status,
           updated_at: new Date(),
-        }
+        },
       });
       const pending_subtasks = await prisma.subtask.findMany({
         where: {
           todo_id: subtask.todo_id,
-          status: 'PENDING'
-        }
+          status: 'PENDING',
+        },
       });
       return prisma.todo.update({
         where: { id: subtask.todo_id },
@@ -89,11 +88,11 @@ class TodoService extends AppService {
         },
         include: {
           subtask: true,
-        }
+        },
       });
     } catch (error) {
-      if (error.name === 'Error') throw new ErrorResponse('Bad Request', 400)
-      throw new ErrorResponse(error.name, 500)
+      if (error.name === 'Error') throw new ErrorResponse('Bad Request', 400);
+      throw new ErrorResponse(error.name, 500);
     }
   }
 }

@@ -1,0 +1,102 @@
+{
+	"variables": [],
+	"info": {
+		"name": "oozou todo task",
+		"_postman_id": "2fd92e51-b5ed-870e-6549-3f65a9668f83",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET TODOS",
+			"request": {
+				"url": "http://localhost:5000/todo",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST TODO",
+			"request": {
+				"url": "http://localhost:5000/todo",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Weekend Shopping\",\n\t\"status\": \"PENDING\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE TODO",
+			"request": {
+				"url": "http://localhost:5000/todo",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"bbb310b8-921b-455c-92e5-7ca69cc5dca6\",\n    \"status\": \"COMPLETED\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST SUBTASK",
+			"request": {
+				"url": "http://localhost:5000/todo/subtask",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"todo_id\": \"bbb310b8-921b-455c-92e5-7ca69cc5dca6\",\n\t\"title\": \"Buy Beverages\",\n    \"status\": \"COMPLETED\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE SUBTASK",
+			"request": {
+				"url": "http://localhost:5000/todo/subtask",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"3047b715-46f9-41a7-bf03-83c1ac35e67e\",\n    \"status\": \"COMPLETED\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
