@@ -6,7 +6,7 @@ const { name, version } = require('./package.json');
 const enviroment = process.env.NODE_ENV;
 
 const corsOptions = {
-  origin: 'http://localhost:3002',
+  origin: 'http://localhost:3000',
   optionsSuccessStatus: 200
 }
 

@@ -16,6 +16,9 @@ class TodoService extends AppService {
     return prisma.todo.create({
       data: {
         title,
+      },
+      include: {
+        subtask: true,
       }
     });
   }
